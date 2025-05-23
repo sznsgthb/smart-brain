@@ -1,7 +1,7 @@
 import React from 'react';
 import './FaceRecognition.css';
 
-const FaceRecognition = ({ imageUrl, box, sentiments }) => { //add: sentiments as props
+const FaceRecognition = ({ imageUrl, box }) => {
     return (
         <div className='center ma'>
             <div className='absolute mt2'>
@@ -15,20 +15,6 @@ const FaceRecognition = ({ imageUrl, box, sentiments }) => { //add: sentiments a
                         left: box.leftCol}}>
                 </div>
             </div>
-
-                        {/* Sentiment output */}
-                        {sentiments.length > 0 && (
-                <div className='sentiment-output mt3'>
-                    <h3>Detected Sentiments:</h3>
-                    <ul>
-                        {sentiments.map((concept, index) => (
-                            <li key={index}>
-                                {concept.name}: {(concept.value * 100).toFixed(2)}%
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
         </div>
     );
 }

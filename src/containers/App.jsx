@@ -132,7 +132,6 @@ class App extends Component {
                                 <FaceRecognition
                                     imageUrl={imageUrl}
                                     box={box}
-                                    sentiments={sentiments}
                                 />
                                 <Sentiments sentiments={sentiments} />
                             </div>

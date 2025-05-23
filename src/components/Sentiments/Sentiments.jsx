@@ -1,4 +1,5 @@
 import React from 'react';
+import './Sentiments.css'
 
 const Sentiments = ({ sentiments }) => {
   if (!sentiments || sentiments.length === 0) {
