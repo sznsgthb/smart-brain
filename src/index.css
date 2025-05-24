@@ -2,7 +2,7 @@
 	font-family: 'Red Hat Display';
 	font-style: normal;
 	font-weight: normal;
-	src: local('Red Hat Display'), url('/assets/RedHatDisplay-Light.ttf') format('truetype');
+	src: url('/RedHatDisplay-Light.ttf') format('truetype');
 }
 
 body {
@@ -11,7 +11,7 @@ body {
     line-height: 35px;
 	font-size: 100%;
 	font-family: 'Red Hat Display', Helvetica, Arial, sans-serif;
-    background: url(./assets/background-colorful.png) no-repeat center center fixed; 
+    background: url(/background-colorful.png) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
