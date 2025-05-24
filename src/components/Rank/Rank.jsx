@@ -1,8 +1,9 @@
 import React from 'react';
+import './Rank.css'
 
 const Rank = ({ name, entries }) => {
     return (
-        <div>
+        <div className='rank-section'>
             <div className='white f4'>
                 {`${name}, your current entry count is:`}
             </div>

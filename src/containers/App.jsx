@@ -92,7 +92,7 @@ class App extends Component {
                 this.displayFaceBox(this.calculateFaceLocation(response));
                 const sentimentOutput = response.outputs.find(output => output.model.id === 'face-sentiment-recognition');
                 const sentiments = sentimentOutput?.data?.concepts || [];
-                this.setState({ sentiments }); // Save to state so you can render it
+                this.setState({ sentiments });
             }
         })
         .catch(err => console.log(err));
@@ -119,8 +119,8 @@ class App extends Component {
                 />
                     {route === 'home'
                         ?   <div>
-                                <Logo />
                                 <Rank name={this.state.user.name} entries={this.state.user.entries} />
+                                <Logo />
                                 <ImageLinkForm
                                     onInputChange={this.onInputChange}
                                     onPictureSubmit={this.onPictureSubmit}
@@ -153,5 +153,3 @@ class App extends Component {
 }
 
 export default App;
-
-

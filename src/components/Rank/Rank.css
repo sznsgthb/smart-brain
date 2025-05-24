@@ -1,0 +1,10 @@
+.rank-section {
+    position: absolute;
+    top: 0;
+    left: 3rem;
+    height: 150px;
+    display: flex;
+    flex-direction: column; /* add this line */
+    justify-content: center;
+    align-items: center;
+}
