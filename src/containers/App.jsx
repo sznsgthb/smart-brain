@@ -18,18 +18,18 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            input: ' ',
-            imageUrl: ' ',
-            box: {},
+            input: '',
+            imageUrl: '',
+            box: [],
             sentiments: [],
             route: 'signin',
             isSignedIn: false,
             user: {
-                id: ' ',
-                name: ' ',
-                email: ' ',
+                id: '',
+                name: '',
+                email: '',
                 entries: 0,
-                joined: ' '
+                joined: ''
             }
         }
     }
@@ -46,7 +46,7 @@ class App extends Component {
 
     calculateFaceLocation = (data) => {
         const faceOutput = data.outputs.find(output => output.model.id === 'face-detection');
-        if (!faceOutput) return;
+        if (!faceOutput) return [];
         const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
         const image = document.getElementById('inputimage');
         const width = Number(image.width);
@@ -63,10 +63,6 @@ class App extends Component {
         // console.log(box);
         this.setState({box: box});
     }
-
-    // displaySentiment = (data) => {
-
-    // }
 
     onInputChange = (event) => {
         this.setState({input: event.target.value});
@@ -129,11 +125,21 @@ class App extends Component {
                                     onInputChange={this.onInputChange}
                                     onPictureSubmit={this.onPictureSubmit}
                                 />
-                                <FaceRecognition
-                                    imageUrl={imageUrl}
-                                    box={box}
-                                />
-                                <Sentiments sentiments={sentiments} />
+
+                            {imageUrl && (
+                                <div className="face-section">
+                                    <div className="image-section">
+                                        <FaceRecognition
+                                            imageUrl={imageUrl}
+                                            box={box}
+                                        />
+                                    </div>
+                                    <div className="sentiment-section">
+                                        <Sentiments sentiments={sentiments} />
+                                    </div>
+                                </div>
+                                )}
+
                             </div>
                         :   (
                                 route === 'signin'

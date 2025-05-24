@@ -7,7 +7,7 @@ const Sentiments = ({ sentiments }) => {
   }
 
   return (
-    <div className='sentiments'>
+    <div>
         <h3>Detected Sentiments</h3>
             <ul>
                 {sentiments.map((sentiment, index) => (
