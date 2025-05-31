@@ -54,8 +54,8 @@
 
 .face-container img {
     display: flex;
-    justify-content: center; /* horizontal centering */
-    align-items: center;     /* vertical centering */
+    justify-content: center; 
+    align-items: center;  
 }
 
 .bounding-box {

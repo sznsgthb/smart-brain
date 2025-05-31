@@ -11,27 +11,28 @@ import Rank from '../components/Rank/Rank';
 import './App.css'
 
 
+const initialState = {
+    input: '',
+    imageUrl: '',
+    box: {},
+    sentiments: [],
+    route: 'signin',
+    isSignedIn: false,
+    user: {
+        id: '',
+        name: '',
+        email: '',
+        entries: 0,
+        joined: ''
+    }
+}
 
 
 class App extends Component {
     
     constructor() {
         super();
-        this.state = {
-            input: '',
-            imageUrl: '',
-            box: [],
-            sentiments: [],
-            route: 'signin',
-            isSignedIn: false,
-            user: {
-                id: '',
-                name: '',
-                email: '',
-                entries: 0,
-                joined: ''
-            }
-        }
+        this.state = initialState;
     }
 
     loadUser = (data) => {
@@ -99,14 +100,21 @@ class App extends Component {
       };
       
     
-    onRouteChange = (route) => {
+      onRouteChange = (route) => {
         if (route === 'signout') {
-            this.setState({isSignedIn: false})
+            this.setState({
+                ...initialState,
+                route: 'signin'
+            });
         } else if (route === 'home') {
-            this.setState({isSignedIn: true})
+            this.setState({
+                isSignedIn: true,
+                route: route
+            });
+        } else {
+            this.setState({ route: route });
         }
-        this.setState({route: route});
-    }
+    };
 
     render() {
         const { isSignedIn, imageUrl, route, box, sentiments } = this.state;

@@ -6,9 +6,9 @@ class Register extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: ' ',
-            email: ' ',
-            password: ' '
+            name: '',
+            email: '',
+            password: ''
         }
     }
 
@@ -34,9 +34,9 @@ class Register extends React.Component {
                 password: this.state.password,
             })
         })
-        .then(response => response.json()) //so we can get the response and subsequently read it
+        .then(response => response.json()) //SH: so we can get the response and subsequently read it
         .then(user => {
-            if (user) {
+            if (user.id) {
                 this.props.loadUser(user)
                 this.props.onRouteChange('home');
             }

@@ -6,8 +6,8 @@ class SignIn extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            signInEmail: ' ',
-            signInPassword: ' '
+            signInEmail: '',
+            signInPassword: ''
         }
     }
 
@@ -28,7 +28,7 @@ class SignIn extends React.Component {
                 password: this.state.signInPassword,
             })
         })
-        .then(response => response.json()) //so we can get the response and subsequently read it
+        .then(response => response.json()) //SH: so we can get the response and subsequently read it
         .then(user => {
             if (user.id) {
                 this.props.loadUser(user)
