@@ -7,7 +7,9 @@ class SignIn extends React.Component {
         super(props);
         this.state = {
             signInEmail: '',
-            signInPassword: ''
+            signInPassword: '',
+            warmingMessage: '',
+            shownWarmupMessage: false,
         }
     }
 
@@ -20,6 +22,15 @@ class SignIn extends React.Component {
     }
     
     onSubmitSignIn = () => {
+
+        setTimeout(() => {
+        if (!this.state.shownWarmupMessage) {
+            this.setState({
+                warmingMessage: "Ben je hier voor het eerst? Dan moet de website nog een beetje opwarmen. Pak even koffie, nog even geduld alsjeblieft.",
+                shownWarmupMessage: true,
+            })
+        }}, 2000)
+
         fetch('https://smart-brain-api-foy8.onrender.com/signin', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -28,7 +39,7 @@ class SignIn extends React.Component {
                 password: this.state.signInPassword,
             })
         })
-        .then(response => response.json()) //SH: so we can get the response and subsequently read it
+        .then(response => response.json()) 
         .then(user => {
             if (user.id) {
                 this.props.loadUser(user)
@@ -43,6 +54,9 @@ class SignIn extends React.Component {
             <article className='block br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center'>
                 <main className='pa4 black-80'>
                     <div className='measure'>
+                            {this.state.warmingMessage && (
+                                    <p className="dark-red f6 mb3">{this.state.warmingMessage}</p>
+                                )}
                         <fieldset id='sign_up' className='ba b--transparent ph0 mh0'>
                             <legend className='f2 fw6 ph0 mh0'>Sign In</legend>
                             <div className='mt3'>

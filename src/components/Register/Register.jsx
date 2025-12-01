@@ -8,7 +8,9 @@ class Register extends React.Component {
         this.state = {
             name: '',
             email: '',
-            password: ''
+            password: '',
+            warmingMessage: '',
+            shownWarmupMessage: false,
         }
     }
 
@@ -25,6 +27,15 @@ class Register extends React.Component {
     }
 
     onSubmitSignIn = () => {
+
+        setTimeout(() => {
+            if (!this.state.shownWarmupMessage) {
+                this.setState({
+                    warmingMessage: "Ben je hier voor het eerst? Dan moet de website nog een beetje opwarmen. Pak even koffie, nog even geduld alsjeblieft.",
+                    shownWarmupMessage: true,
+                })
+            }}, 2000)
+
         fetch('https://smart-brain-api-foy8.onrender.com/register', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},

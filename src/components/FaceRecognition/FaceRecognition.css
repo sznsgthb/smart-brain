@@ -9,8 +9,8 @@
 
 .image-section {
     display: flex;
-    justify-content: center; /* horizontal centering */
-    align-items: center;     /* vertical centering */
+    justify-content: center; 
+    align-items: center; 
     padding: 3rem 3rem;
     background: rgba(255, 255, 250, 0.5);
     border: 1px solid rgb(58, 62, 69);
@@ -23,7 +23,7 @@
 
 .image-section img {
     display: flex;
-    justify-content: center; /* horizontal centering */
+    justify-content: center; 
     align-items: center;     
     max-width: 100%;
     height: auto;
